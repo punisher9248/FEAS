@@ -11,7 +11,6 @@ import 'package:path/path.dart';
 import '../../All_Constants/buttons.dart';
 import '../../All_Constants/colors.dart';
 import '../../All_Models/auth_service.dart';
-import '../../All_Models/user_model.dart';
 import 'login_screen.dart';
 
 
@@ -71,10 +70,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return urlDownload;
 
   }
+
   final FirebaseAuth auth1 = FirebaseAuth.instance;
 
   Future<void> addData(String value1) async {
     final collectionRef = FirebaseFirestore.instance.collection('UserDataInfo');
+
     await collectionRef.add({
       "First Name":   "${fname.text}",
       "Email" :  "${email.text}",
@@ -95,9 +96,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
       "Phone Number": no.text,
       "Password": password.text,
       "profileImg":value1,
-
-
-
     });
 
   }
@@ -269,14 +267,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         );
 
                       }
-                      auth.handleSignUp(email.text, password.text,no.text,fname.text,email.text).then((value){
+                      auth.handleSignUp(email.text, password.text,no.text,fname.text,dob.text).then((value){
                         if(value=="done"){
                           upload().then((value1) async {
-
                             addData(value1);
-
-
-                           // Get.to(()=>LoginScreen());
+                            Get.to(()=>LoginScreen());
 
                             Fluttertoast.showToast(
                                 msg: "Sign Up Successfully",
@@ -286,7 +281,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 backgroundColor: Color(0xFF1E272E),
                                 textColor: Colors.white,
                                 fontSize: 16.0);
-
+                            email.clear();
+                            password.clear();
+                            no.clear();
+                            fname.clear();
+                            dob.clear();
                           });
                         }
                         else{

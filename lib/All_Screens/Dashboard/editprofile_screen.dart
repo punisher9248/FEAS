@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp_feas/All_Widgets/widgets.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 import '../../All_Constants/buttons.dart';
 import '../../All_Constants/colors.dart';
@@ -97,46 +100,75 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               ),)),
 
 
-              SizedBox(height: MediaQuery.of(context).size.height*0.02,),
-
-              ItemUploadWidgets(
-                  title: "Saw",
-                  detail: "Lorem Ipsum\n it is a saw used\nonly 1 month",
-                  img: "assets/images/saw.png"
-              ),
-
-              SizedBox(height: MediaQuery.of(context).size.height*0.04,),
-
-              ItemUploadWidgets(
-                  title: "Saw",
-                  detail: "Lorem Ipsum\n it is a saw used\nonly 1 month",
-                  img: "assets/images/saw.png"
-              ),
-
-              SizedBox(height: MediaQuery.of(context).size.height*0.08,),
-
              Container(
-               height: 150,
+               height: Get.height,
                child:  FutureBuilder<QuerySnapshot>(
                  future: fetchSubCollectionData(),
                  builder: (context, snapshot) {
                    if (snapshot.connectionState == ConnectionState.waiting) {
-                     return Center(
-                       child: CircularProgressIndicator(),
-                     );
+                     return Center(child: CircularProgressIndicator());
                    } else {
                      final List<DocumentSnapshot> documents = snapshot.data!.docs;
                      return ListView.builder(
                        itemCount: documents.length,
                        itemBuilder: (context, index) {
-                         final data = documents[index].data();
-                         return ListTile(
-                           title: Text(documents[index]['details']),
-                           subtitle: Text(documents[index]['location']),
-                           trailing: Text(documents[index]['price']),
+                         return Padding(
+                             padding: EdgeInsets.only(top: 20),
+                             child: Container(
+                               width: 300,
+                               height: 110,
+                               decoration: BoxDecoration(
+                                   color: Colors.white,
+                                   borderRadius: BorderRadius.circular(15),
+                                   border: Border.all(color: Colors.white, width: 1),
+                               boxShadow: [
+                                 BoxShadow(
+                                     blurRadius: 2,
+                                     color: Colors.grey,
+                                     spreadRadius: 1
+                                 )
+                               ]
+                           ),
+                           child: Padding(
+                             padding: const EdgeInsets.only(left: 10,right: 10,top: 10),
+                             child: Column(
+                               children: [
+                                 Row(
+                                   crossAxisAlignment: CrossAxisAlignment.start,
+                                   children: [
+                                     Image.network("${documents[index]['ProductImage']}",width: 80,height: 80,),
+                                     SizedBox(width: 15,),
+                                     Column(
+                                       crossAxisAlignment: CrossAxisAlignment.start,
+                                       children: [
+                                         SizedBox(height: 5,),
+                                         Text("${documents[index]['ProductName']}", style: TextStyle(
+                                           fontSize: 18,
+                                           fontWeight: FontWeight.w700,
+                                         ),),
+                                         SizedBox(height: 5,),
+                                         Text("${documents[index]['ProductDescription']}", style: TextStyle(
+                                           fontSize: 13,
+                                           fontWeight: FontWeight.w400,
+                                         ),),
+                                         SizedBox(height: 15,),
+
+                                       ],
+                                     ),
+
+                                   ],
+                                 ),
 
 
+                               ],
+                             ),
+                           ),
+
+                         )
                          );
+
+
+
                        },
                      );
                    }
@@ -168,7 +200,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 text: "Delete Item",
                 color: primarycolor,
                 fontsize: 20,
-                onPressed: (){},
+                onPressed: (){fetchSubCollectionData();},
                 textcolor: Colors.white,
                 fontweight: FontWeight.w500
             ),
@@ -193,13 +225,19 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   }
 
   Future<QuerySnapshot> fetchSubCollectionData() async {
-    final CollectionReference mainCollectionRef =
-    firestore.collection('UserDataInfo');
-    final DocumentReference documentRef =
-    mainCollectionRef.doc('GWIyQPYaoOe0f9fA0V9ylvY09Es2');
-    final CollectionReference subCollectionRef =
-    documentRef.collection('upload');
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    final User? user = await auth.currentUser;
+    final uid = user?.uid;
+
+    if (user == null) {
+     print("No User");
+    }
+
+    final CollectionReference mainCollectionRef = firestore.collection('UserDataInfo');
+    final DocumentReference documentRef = mainCollectionRef.doc(uid);
+    final CollectionReference subCollectionRef = documentRef.collection('MyProduct');
     final QuerySnapshot querySnapshot = await subCollectionRef.get();
+    print(querySnapshot);
     return querySnapshot;
   }
 
