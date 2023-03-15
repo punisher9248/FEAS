@@ -1,8 +1,14 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp_feas/All_Screens/Splash_screen/splash_screen.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:provider/provider.dart';
 
-void main() {
+import 'All_Models/google_signin.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -12,7 +18,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MultiProvider(
+        providers: [
+        ChangeNotifierProvider(create: (_) => GoogleSignInProvider()),
+    // Provider<AuthService>(create: (_) => AuthService())
+    ],
+
+      child:GetMaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -28,6 +40,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: SplashScreen(),
+    ),
     );
   }
 }

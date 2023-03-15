@@ -164,7 +164,7 @@ class NearbyEventsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 2,
+      elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       child: Container(
         height: 140,
@@ -256,74 +256,66 @@ class NearbyEventsWidget extends StatelessWidget {
 class NotificationWidget extends StatelessWidget {
   final String eventname;
   final String cityname;
-  final String price;
+
   final String img;
 
-  const NotificationWidget({Key? key, required this.eventname, required this.cityname, required this.price, required this.img}) : super(key: key);
+  const NotificationWidget({Key? key,
+    required this.eventname,
+    required this.cityname,
+    required this.img}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 10,right: 10),
-      child: Container(
-        width: MediaQuery.of(context).size.width*1,
-        height: 80,
-        decoration: BoxDecoration(
-            color: primarycolor
-        ),
-        child: Row(
-          children: [
-            Image.asset(img),
-            SizedBox(width: 15,),
-            Padding(
-              padding: const EdgeInsets.only(top: 15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(eventname, style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 14,
-                      color: Colors.white
-                  ),),
-                  SizedBox(height: 10,),
+    return Card(
+      elevation: 2,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      shadowColor: Colors.grey,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 8,right: 8),
+        child: Container(
+          width: MediaQuery.of(context).size.width*1,
+          height: 80,
+          decoration: BoxDecoration(
+              color: Colors.white,
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: [
 
-                  Text(cityname,style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 14,
-                      color: Colors.grey
-                  ), ),
-                ],
+            ]
+          ),
+          child: Row(
+            children: [
+              Image.asset(img),
+              SizedBox(width: 15,),
+              Padding(
+                padding: const EdgeInsets.only(top: 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(eventname, style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 14,
+                        color: Colors.black
+                    ),),
+                    SizedBox(height: 10,),
+
+                    Text(cityname,style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 14,
+                        color: Colors.grey
+                    ), ),
+                  ],
+                ),
               ),
-            ),
-
-            Spacer(),
-
-            Padding(
-              padding: const EdgeInsets.only(top: 15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(price, style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 14,
-                      color: Colors.white
-                  ),),
-                  SizedBox(height: 10,),
-
-                  Image.asset("assets/images/graph.png")
-
-
-                ],
-              ),
-            ),
 
 
 
 
-          ],
+
+            ],
+          ),
+
+
         ),
-
-
       ),
     );
   }
@@ -439,61 +431,73 @@ class ChatWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 10,right: 10),
-      child: Container(
-        width: MediaQuery.of(context).size.width*1,
-        height: 80,
-        decoration: BoxDecoration(
-            color: primarycolor
-        ),
-        child: Row(
-          children: [
-            Image.asset(img),
-            SizedBox(width: 15,),
-            Padding(
-              padding: const EdgeInsets.only(top: 15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(eventname, style: TextStyle(
+    return Card(
+      elevation: 2,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      shadowColor: Colors.grey,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 5,right: 5),
+        child: Container(
+          width: MediaQuery.of(context).size.width*12,
+          height: 80,
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(15),
+
+          ),
+          child: Row(
+            children: [
+              SizedBox(width: 10,),
+              Image.asset(img),
+              SizedBox(width: 15,),
+              Padding(
+                padding: const EdgeInsets.only(top: 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(eventname, style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 14,
+                        color: Colors.black
+                    ),),
+                    SizedBox(height: 10,),
+
+                    Text(msg,style: TextStyle(
                       fontWeight: FontWeight.w700,
                       fontSize: 14,
-                      color: Colors.white
-                  ),),
-                  SizedBox(height: 10,),
+                      overflow: TextOverflow.ellipsis,
 
-                  Text(msg,style: TextStyle(
+                      color: Colors.grey,
+                    ),
+                      softWrap: true,
+                    )
+
+
+
+                  ],
+                ),
+              ),
+
+              Spacer(),
+
+              Padding(
+                padding: const EdgeInsets.only(right: 8),
+                child: Text(date, style: TextStyle(
                     fontWeight: FontWeight.w700,
                     fontSize: 14,
-                    overflow: TextOverflow.ellipsis,
-
-                    color: Colors.grey,
-                  ),
-                    softWrap: true,
-                  )
-
-
-
-                ],
+                    color: Colors.black
+                ),),
               ),
-            ),
-
-            Spacer(),
-
-            Text(date, style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 14,
-                color: Colors.white
-            ),),
 
 
 
 
-          ],
+
+            ],
+          ),
+
+
         ),
-
-
       ),
     );
   }
@@ -722,25 +726,37 @@ class ChatWidget extends StatelessWidget {
 
 
 
-class CompletedWidgets extends StatelessWidget {
+class ItemUploadWidgets extends StatelessWidget {
   final String title;
-  final String citydate;
+  final String detail;
   final String img;
 
-  const CompletedWidgets({Key? key, required this.title, required this.citydate, required this.img}) : super(key: key);
+  const ItemUploadWidgets({Key? key,
+    required this.title,
+    required this.detail,
+    required this.img
+  }
+  ) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return  Container(
-      width: 350,
-      height: 203,
+      width: 300,
+      height: 110,
       decoration: BoxDecoration(
-        color: secondarycolor,
-        borderRadius: BorderRadius.circular(25),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(15),
         border: Border.all(
             color: Colors.white,
             width: 1
         ),
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 2,
+            color: Colors.grey,
+            spreadRadius: 1
+          )
+        ]
       ),
       child: Padding(
         padding: const EdgeInsets.only(left: 10,right: 10,top: 10),
@@ -760,58 +776,18 @@ class CompletedWidgets extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                     ),),
                     SizedBox(height: 5,),
-                    Text(citydate, style: TextStyle(
+                    Text(detail, style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w400,
                     ),),
                     SizedBox(height: 15,),
 
-                    Container(
-                      width: 60,
-                      height: 24,
-                      decoration: BoxDecoration(
-                        color: primarycolor,
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: Center(
-                        child: Text("Completed", style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 9,
-                            fontWeight: FontWeight.w400
-                        ),),
-                      ),
-                    ),
                   ],
                 ),
 
               ],
             ),
-            SizedBox(height: 15),
 
-            Component6(
-              color: Colors.black.withOpacity(0.25),
-              height: 1,
-            ),
-
-            SizedBox(height: 20,),
-            Container(
-              height: 33,
-              width: 340,
-              decoration: BoxDecoration(
-                color: primarycolor.withOpacity(0.75),
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Row(
-                children: [
-                  SizedBox(width: 10,),
-                  Image.asset("assets/icons/completed.png"),
-                  SizedBox(width: 10,),
-                  Text("Yeah, you have completed ", style: TextStyle(
-                      color: Colors.white
-                  ),)
-                ],
-              ),
-            )
 
           ],
         ),

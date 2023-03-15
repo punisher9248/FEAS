@@ -255,7 +255,8 @@ class CustomEditField5 extends StatelessWidget {
               Image.asset(image),
               SizedBox(width: 10,),
 
-              Expanded(child: TextField(
+              Expanded(
+                child: TextField(
                 controller: controller,
                 style: TextStyle(
                     fontFamily: 'Quicksand',fontWeight: FontWeight.w400,

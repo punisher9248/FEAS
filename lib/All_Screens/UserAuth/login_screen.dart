@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:fyp_feas/All_Constants/buttons.dart';
 import 'package:fyp_feas/All_Constants/textfield.dart';
 import 'package:fyp_feas/All_Constants/utilis.dart';
@@ -9,6 +11,7 @@ import 'package:get/get_core/src/get_main.dart';
 
 import '../../All_Constants/colors.dart';
 import '../../All_Constants/components.dart';
+import '../../All_Models/auth_service.dart';
 
 
 
@@ -21,7 +24,46 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final email = TextEditingController();
-  final pass =TextEditingController();
+  final pass = TextEditingController();
+
+  final SignUpController showPass = Get.put(SignUpController());
+
+  Future signIn() async{
+
+    try {
+
+      await FirebaseAuth.instance.signInWithEmailAndPassword(email: email.text.trim(), password: pass.text.trim());
+      Fluttertoast.showToast(
+          msg: "Sign In Successfully",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.SNACKBAR,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Color(0xFF1E272E),
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) =>AnimatedBarExample()
+
+
+      ));
+
+    } on FirebaseAuthException catch(e){
+      Fluttertoast.showToast(
+          msg: "${e}",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.SNACKBAR,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Color(0xFF1E272E),
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+    }
+
+  }
+
+  final auth=Auth();
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -85,14 +127,70 @@ class _LoginScreenState extends State<LoginScreen> {
 
               Center(
                 child: CustomButton(
-                    height: 50,
-                    width: 200,
-                    text: "Login",
-                    color: primarycolor,
-                    fontsize: 20,
-                    onPressed: (){Get.to(()=>AnimatedBarExample());},
-                    textcolor: Colors.black,
-                    fontweight: FontWeight.w600
+                  height: 56,
+                  width: 300,
+                  text: "Login",
+                  color: primarycolor,
+                  fontsize: 20,
+                  textcolor: Colors.white,
+                  fontweight: FontWeight.w700,
+                  onPressed: (){
+                    if(email.text.isEmpty || pass.text.isEmpty ){
+
+                      Fluttertoast.showToast(
+                          msg: "Enter All Field",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.SNACKBAR,
+                          timeInSecForIosWeb: 1,
+                          backgroundColor: Color(0xFF1E272E),
+                          textColor: Colors.white,
+                          fontSize: 16.0
+                      );
+                      return;
+                    }else if(!email.text.contains('@') || !email.text.contains(".com")){
+                      Fluttertoast.showToast(
+                          msg: "Wrong Email Format",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.SNACKBAR,
+                          timeInSecForIosWeb: 1,
+                          backgroundColor: Color(0xFF1E272E),
+                          textColor: Colors.white,
+                          fontSize: 16.0
+                      );
+
+                    }else{
+                      auth.handleSignInEmail(context,email.text, pass.text).then((value){});
+                    }
+
+
+
+                    if (email.text.isEmpty||pass.text.isEmpty){
+
+                      Fluttertoast.showToast(
+                        msg: "Enter all filed",
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.SNACKBAR,
+                        timeInSecForIosWeb: 1,
+                        backgroundColor: Color(0xFF1E272E),
+                        textColor: Colors.white,
+                        fontSize: 16.0,
+                      );
+                    }else if(!email.text.contains('@')||!email.text.contains('.com')){
+                      Fluttertoast.showToast(
+                        msg: "Invalid Email Format",
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.SNACKBAR,
+                        timeInSecForIosWeb: 1,
+                        backgroundColor: Color(0xFF1E272E),
+                        textColor: Colors.white,
+                        fontSize: 16.0,
+                      );
+                    }else {
+
+                      auth.handleSignInEmail(context,email.text, pass.text).then((value){});
+                      //signIn();
+                    }
+                  },
                 ),
               ),
 

@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp_feas/All_Screens/Dashboard/home_screen.dart';
+import 'package:fyp_feas/All_Screens/Dashboard/search_screen.dart';
 
 import '../All_Screens/Dashboard/profile_screen.dart';
+import '../All_Screens/Dashboard/uploaditem_screen.dart';
 import 'colors.dart';
 
 
@@ -20,8 +22,8 @@ class _AnimatedBarExampleState extends State<AnimatedBarExample> {
 
   final tabs = [
     HomeScreen(),
-    HomeScreen(),
-    HomeScreen(),
+    SearchScreen(),
+    UploadScreen(),
     ProfileScreen()
 
 
@@ -69,7 +71,7 @@ class _AnimatedBarExampleState extends State<AnimatedBarExample> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.sticky_note_2),
-            label: 'Booking',
+            label: 'Upload',
 
           ),
           BottomNavigationBarItem(

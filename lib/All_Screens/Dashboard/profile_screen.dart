@@ -4,6 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 
 import '../../All_Constants/buttons.dart';
 import '../UserAuth/login_screen.dart';
+import 'editprofile_screen.dart';
 
 
 
@@ -75,7 +76,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           profile(
               "assets/icons/profileicon2.png",
               "Edit Profile",
-                  (){}
+                  (){Get.to(()=>EditProfileScreen());}
           ),
           SizedBox(height: MediaQuery.of(context).size.height*0.04,),
           profile(

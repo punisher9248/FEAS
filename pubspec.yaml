@@ -39,6 +39,17 @@ dependencies:
   syncfusion_flutter_sliders: ^20.4.43
   syncfusion_flutter_charts: ^20.4.43
   flutter_switch: ^0.3.2
+  firebase_auth: ^4.2.5
+  firebase_core: ^2.4.1
+  shared_preferences: ^2.0.17
+  fluttertoast: ^8.1.2
+  google_sign_in: ^5.4.4
+  cloud_firestore: ^4.3.1
+  firebase_storage: ^11.0.10
+  image_picker: ^0.8.6+1
+  firebase_core_platform_interface: ^4.5.2
+  firebase_database: ^10.0.14
+  provider: ^6.0.5
 
 dev_dependencies:
   flutter_test:
