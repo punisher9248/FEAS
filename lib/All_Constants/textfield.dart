@@ -40,7 +40,7 @@ class CustomEditField extends StatelessWidget {
           shape: BoxShape.rectangle,
           color: Colors.transparent,
           borderRadius: BorderRadius.circular(20),
-          border: Border.all(width: borderwidth, color: bordercolor),
+          border: Border.all(width: borderwidth, color: secondarycolor),
         ),
 
         child: Padding(
@@ -49,6 +49,73 @@ class CustomEditField extends StatelessWidget {
             children: [
 
               Image.asset(image),
+              SizedBox(width: 10,),
+              Expanded(child: TextField(
+                controller: controller,
+                style: TextStyle(
+                    fontFamily: 'Quicksand',fontWeight: FontWeight.w400,
+                    color: textcolor
+                ),
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: hintText,
+                  hintStyle: TextStyle(
+                    color:  hintextcolor,
+                    fontWeight: FontWeight.w500,
+                    fontSize: Get.height * 0.019,
+                  ),
+                ),
+              ),)
+            ],
+          ),
+        )
+    );
+  }
+}
+
+
+class CustomEditFieldEditProfile extends StatelessWidget {
+  final TextEditingController controller;
+  final double width ;
+  final double height;
+  final String hintText;
+
+  final dynamic bordercolor;
+  final dynamic hintextcolor;
+  final double borderwidth;
+  final dynamic textcolor;
+
+  const CustomEditFieldEditProfile(
+      {Key? key,
+        required this.width,
+        required this.height,
+        required this.hintText,
+        required this.controller,
+
+
+        this.bordercolor, this.hintextcolor,  required this.borderwidth, this.textcolor,
+      })
+      : super(key: key);
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        height: height,
+        width: width,
+        decoration: BoxDecoration(
+          shape: BoxShape.rectangle,
+          color: Colors.transparent,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(width: borderwidth, color: bordercolor),
+        ),
+
+        child: Padding(
+          padding: const EdgeInsets.only(left: 15, right: 15),
+          child: Row(
+            children: [
+
+
               SizedBox(width: 10,),
               Expanded(child: TextField(
                 controller: controller,
@@ -469,7 +536,7 @@ class CustomPassField extends StatelessWidget {
       decoration: BoxDecoration(
           shape: BoxShape.rectangle,
           color: Colors.white,
-          border: Border.all(color: Color(0xff4193B9), width: 2),
+          border: Border.all(color: secondarycolor, width: 2),
         borderRadius: BorderRadius.circular(20),
 
       ),

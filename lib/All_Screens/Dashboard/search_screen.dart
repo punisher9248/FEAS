@@ -26,10 +26,13 @@ class _SearchScreenState extends State<SearchScreen> {
           padding: const EdgeInsets.only(left: 15, right: 15),
           child: Column(
             children: [
-              SizedBox(height: MediaQuery.of(context).size.height*0.06,),
+              SizedBox(height: MediaQuery.of(context).size.height*0.08,),
 
               Component4(controller: search,),
-              SizedBox(height: MediaQuery.of(context).size.height*0.06,),
+              SizedBox(height: MediaQuery.of(context).size.height*0.08,),
+
+
+              Center(child: Image.asset("assets/images/search.png")),
 
 
 

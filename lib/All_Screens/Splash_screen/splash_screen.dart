@@ -1,7 +1,5 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:fyp_feas/All_Constants/colors.dart';
 import 'package:fyp_feas/All_Screens/UserAuth/user_auth_screen.dart';
 
 
@@ -32,9 +30,9 @@ class _SplashScreenState extends State<SplashScreen> {
         children: [
 
           Center(
-              child: Text("FEAS", style: TextStyle(fontSize:100, color: primarycolor),
-              )
-          )
+              child: Image.asset("assets/images/feaslogo.png"),
+              ),
+
           
         ],
       ),

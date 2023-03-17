@@ -24,18 +24,15 @@ class _UserAuthenticationState extends State<UserAuthentication> {
       body: Column(
         children: [
           SizedBox(height: MediaQuery.of(context).size.height*0.1,),
-          Center(child: Text("FEAS", style: TextStyle(
-            fontSize: 40,
-            color: Colors.black
-          ),)),
-          
-          Image.asset("assets/icons/logo.png"),
-          SizedBox(height: MediaQuery.of(context).size.height*0.04,),
+
+
+          Center(child: Image.asset("assets/images/feaslogo.png", height: 400,)),
+          SizedBox(height: MediaQuery.of(context).size.height*0.15,),
 
 
           CustomButton(
-              height: 50,
-              width: 200,
+              height: 60,
+              width:300,
               text: "Login",
               color: primarycolor,
               fontsize: 20,
@@ -48,13 +45,13 @@ class _UserAuthenticationState extends State<UserAuthentication> {
 
 
           CustomButton(
-              height: 50,
-              width: 200,
+              height: 60,
+              width: 300,
               text: "Sign Up",
               color: secondarycolor,
               fontsize: 20,
               onPressed: (){Get.to(()=>SignUpScreen());},
-              textcolor: Colors.black,
+              textcolor: Colors.white,
               fontweight: FontWeight.w600
           ),
 

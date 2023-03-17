@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fyp_feas/All_Constants/buttons.dart';
 import 'package:fyp_feas/All_Constants/colors.dart';
+import 'package:fyp_feas/All_Screens/Dashboard/chat_screen.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 class DetailsScreen extends StatefulWidget {
   const DetailsScreen({Key? key}) : super(key: key);
@@ -164,7 +167,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       text: "Chat",
                       color: primarycolor,
                       fontsize: 20,
-                      onPressed: (){},
+                      onPressed: (){Get.to(()=>ChatScreen());},
                       textcolor: Colors.white,
                       fontweight: FontWeight.w500
                   ),

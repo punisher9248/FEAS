@@ -80,17 +80,16 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: MediaQuery.of(context).size.height*0.05,),
-              Center(child: Text("F E A S", style: TextStyle(
-                  fontSize: 40, fontWeight: FontWeight.w900,fontStyle: FontStyle.italic,
-                  color: primarycolor.withOpacity(0.8)
-              ),)),
+
+
+              Center(child: Image.asset("assets/images/feaslogo.png", height: 200,)),
 
               SizedBox(height: MediaQuery.of(context).size.height*0.06,),
 
-             Text("Login to your Account", style: TextStyle(
-               color: Colors.black, fontSize: 45, fontWeight: FontWeight.w600
+             Text("  Login to your\n  Account", style: TextStyle(
+               color: Colors.black, fontSize: 35, fontWeight: FontWeight.w600
              ),),
-              SizedBox(height: MediaQuery.of(context).size.height*0.1,),
+              SizedBox(height: MediaQuery.of(context).size.height*0.07,),
 
 
 
@@ -132,7 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   text: "Login",
                   color: primarycolor,
                   fontsize: 20,
-                  textcolor: Colors.white,
+                  textcolor: Colors.black,
                   fontweight: FontWeight.w700,
                   onPressed: (){
                     if(email.text.isEmpty || pass.text.isEmpty ){
@@ -194,12 +193,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
 
-              SizedBox(height: MediaQuery.of(context).size.height*0.1,),
 
 
-
-
-              SizedBox(height: MediaQuery.of(context).size.height*0.13,),
+              SizedBox(height: MediaQuery.of(context).size.height*0.17,),
 
 
               Row(

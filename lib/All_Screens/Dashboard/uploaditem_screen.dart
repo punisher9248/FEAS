@@ -163,7 +163,7 @@ class _UploadScreenState extends State<UploadScreen> {
 
 
       Fluttertoast.showToast(
-          msg: "Sign Up Successfully",
+          msg: "Item Uploaded Successfully",
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.SNACKBAR,
           timeInSecForIosWeb: 1,

@@ -144,112 +144,112 @@ class NearbyItems extends StatelessWidget {
 
 
 
-class NearbyEventsWidget extends StatelessWidget {
-  final String title;
-  final String rent;
-  final String reviews;
-  final String reviews2;
-  final String price;
-  final String img;
-
-
-  const NearbyEventsWidget({Key? key,
-    required this.title,
-    required this.rent,
-    required this.reviews,
-    required this.price,
-    required this.img,
-    required this.reviews2,}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      elevation: 4,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      child: Container(
-        height: 140,
-        width: 380,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.white,
-
-          boxShadow: [
-            BoxShadow(
-              //blurRadius: 0.5,
-            )
-          ]
-        ),
-
-        child: Padding(
-          padding: const EdgeInsets.only(top: 20),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(width: 15,),
-              Image.asset(img),
-
-              SizedBox(width: 15,),
-
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-
-                  Text(title, style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 18
-                  ),),
-                  SizedBox(height: 10,),
-                  Text(rent, style: TextStyle(
-                      color: Colors.grey,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 14
-                  ),),
-
-                  SizedBox(height: 30,),
-                  Row(
-                    children: [
-                      Text(reviews, style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 14
-                      ),),
-                      SizedBox(width: 10,),
-
-                      Image.asset("assets/icons/star.png"),
-                      SizedBox(width: 10,),
-
-                      Text(reviews2,style: TextStyle(
-                          color: Colors.black54,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 14
-                      ),)
-
-
-                    ],
-                  ),
-
-                ],
-              ),
-              Spacer(),
-
-              Text(price,style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 20
-              ), ),
-
-              SizedBox(width: 20,)
-
-            ],
-          ),
-        ),
-
-
-      ),
-    );
-  }
-}
+// class NearbyEventsWidget extends StatelessWidget {
+//   final String title;
+//   final String rent;
+//   final String reviews;
+//   final String reviews2;
+//   final String price;
+//   final String img;
+//
+//
+//   const NearbyEventsWidget({Key? key,
+//     required this.title,
+//     required this.rent,
+//     required this.reviews,
+//     required this.price,
+//     required this.img,
+//     required this.reviews2,}) : super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Card(
+//       elevation: 4,
+//       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+//       child: Container(
+//         height: 140,
+//         width: 380,
+//         decoration: BoxDecoration(
+//           borderRadius: BorderRadius.circular(15),
+//           color: Colors.white,
+//
+//           boxShadow: [
+//             BoxShadow(
+//               //blurRadius: 0.5,
+//             )
+//           ]
+//         ),
+//
+//         child: Padding(
+//           padding: const EdgeInsets.only(top: 20),
+//           child: Row(
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             children: [
+//               SizedBox(width: 15,),
+//               Image.asset(img),
+//
+//               SizedBox(width: 15,),
+//
+//               Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 children: [
+//
+//                   Text(title, style: TextStyle(
+//                       color: Colors.black,
+//                       fontWeight: FontWeight.w700,
+//                       fontSize: 18
+//                   ),),
+//                   SizedBox(height: 10,),
+//                   Text(rent, style: TextStyle(
+//                       color: Colors.grey,
+//                       fontWeight: FontWeight.w700,
+//                       fontSize: 14
+//                   ),),
+//
+//                   SizedBox(height: 30,),
+//                   Row(
+//                     children: [
+//                       Text(reviews, style: TextStyle(
+//                           color: Colors.black,
+//                           fontWeight: FontWeight.w700,
+//                           fontSize: 14
+//                       ),),
+//                       SizedBox(width: 10,),
+//
+//                       Image.asset("assets/icons/star.png"),
+//                       SizedBox(width: 10,),
+//
+//                       Text(reviews2,style: TextStyle(
+//                           color: Colors.black54,
+//                           fontWeight: FontWeight.w700,
+//                           fontSize: 14
+//                       ),)
+//
+//
+//                     ],
+//                   ),
+//
+//                 ],
+//               ),
+//               Spacer(),
+//
+//               Text(price,style: TextStyle(
+//                   color: Colors.black,
+//                   fontWeight: FontWeight.w700,
+//                   fontSize: 20
+//               ), ),
+//
+//               SizedBox(width: 20,)
+//
+//             ],
+//           ),
+//         ),
+//
+//
+//       ),
+//     );
+//   }
+// }
 
 
 
