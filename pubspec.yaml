@@ -82,6 +82,8 @@ flutter:
     - assets/
     - assets/icons/
     - assets/images/search.png
+    - assets/images/feaslogo.png
+    - assets/images/pak.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

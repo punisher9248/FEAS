@@ -176,12 +176,6 @@ class _UploadScreenState extends State<UploadScreen> {
       price.clear();
     });
 
-
-
-
-
-
-
   }
 
 
